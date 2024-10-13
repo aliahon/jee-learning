@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculateur IMC</title>
+    <style>
+    	.form__input {
+      		width: 300px;
+      		height: 30px;
+      		padding: 0 5px;
+      		border: 1px solid black;
+      		border-radius: 2px;
+     		margin: 0.625rem auto;
+      		transition: all 250ms;
+      	}
+    </style>
+</head>
+<body>
+    <div style="margin: 5% 25%; background-color:pink; padding: 10px; border-radius:15px; align-self:center;">
+		<h1 style="color:red; text-align:center;">Calculateur IMC</h1> 
+		<form action="calculIMC.jsp" method="post" style="text-align:center;">
+		
+        	<input type="number" id="poids" name="poids" step="1" required class="form__input" placeholder="Poids (kg)"><br><br>
+        
+        	<input type="number" id="taille" name="taille" step="1" required class="form__input" placeholder="Taille (cm)"><br><br>
+        
+        	<input type="number" id="age" name="age" required class="form__input" style="margin-left:5px;" placeholder="Age"><br><br>
+
+        
+        	<label for="enceinte">Etes-vous une femme enceinte ?</label><br><br>
+        	<input type="radio" id="enceinteOui" name="enceinte" value="oui"> Oui
+        	<input type="radio" id="enceinteNon" name="enceinte" value="non" checked> Non<br><br>
+
+        
+        	<label for="musclee">Etes-vous une personne musclee ?</label><br><br>
+        	<input type="radio" id="muscleeOui" name="musclee" value="oui"> Oui
+        	<input type="radio" id="muscleeNon" name="musclee" value="non" checked> Non<br><br>
+
+        	<input type="submit" value="Calculer l'IMC" style="margin:5% 25%;">
+    	</form>
+    </div>
+    
+    
+</body>
+</html>
