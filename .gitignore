@@ -1,0 +1,42 @@
+# Eclipse-specific files
+/.settings/
+/.project
+/.classpath
+
+# Eclipse Core
+/.metadata/
+/*.tmp
+/*.bak
+/*.swp
+/*.swo
+*.log
+/*.DS_Store
+
+
+# Maven/Gradle specific files (if used)
+target/
+build/
+*.iml
+*.ipr
+*.iws
+.gradle/
+/build/
+!/src/main/**/application.properties
+
+# Node (if you use Node for frontend dependencies)
+/node_modules/
+
+# Java class files
+*.class
+
+# Log files
+*.log
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Backup files
+*.bak
+*.tmp
