@@ -8,22 +8,35 @@ pageEncoding="ISO-8859-1"%>
 <html>
 <head>
     <title>Résultat du Calcul IMC</title>
+    <style>
+    	.alert{
+    		margin: 5% 25%;
+    		background-color:pink;
+    		padding: 10px; border-radius:15px;
+    		align-self:center;
+    	    text-align:center;
+    	    font-size:20px;
+    	}
+    	.alert strong{
+    		color:red;
+    		font-size:25px;
+    	}
+    </style>
 </head>
-<body>
-    <h2>Résultats du calcul de l'IMC</h2>
+<body style="background-color:#11150d;">
+    <h2 style="color:white; text-align:center;">Résultats du calcul de l'IMC</h2>
 
     <% 
-        // Récupérer les données du formulaire
         double poids = Double.parseDouble(request.getParameter("poids"));
         double taille = Double.parseDouble(request.getParameter("taille"));
         int age = Integer.parseInt(request.getParameter("age"));
         String enceinte = request.getParameter("enceinte");
         String musclee = request.getParameter("musclee");
 
-        // Calcul de l'IMC
+        
         double imc = poids * 10000 / (taille * taille);
 
-        // Définir l'interprétation de l'IMC en fonction de l'OMS
+        
         String interpretation = "";
         if (imc < 16) {
             interpretation = "Anorexie ou dénutrition";
@@ -40,8 +53,7 @@ pageEncoding="ISO-8859-1"%>
         } else {
             interpretation = "Obésité morbide ou massive";
         }
-
-        // Stocker les résultats dans les attributs de la requête
+        
         request.setAttribute("imc", imc);
         request.setAttribute("interpretation", interpretation);
         request.setAttribute("age", age);
@@ -51,22 +63,23 @@ pageEncoding="ISO-8859-1"%>
 
     <c:choose>
         <c:when test="${age < 18 || age > 65}">
-            <p><strong>Attention !</strong> Cet outil n'est pas adapté pour les personnes âgées de moins de 18 ans ou de plus de 65 ans.</p>
+            <p class="alert"><strong>Attention !</strong><br><br> Cet outil n'est pas adapté pour les personnes âgées de moins de 18 ans ou de plus de 65 ans.</p>
         </c:when>
         <c:when test="${enceinte == 'oui'}">
-            <p><strong>Attention !</strong> Cet outil n'est pas adapté pour les femmes enceintes. Veuillez consulter un professionnel de la santé.</p>
+            <p class="alert"><strong>Attention !</strong> <br><br>Cet outil n'est pas adapté pour les femmes enceintes. Veuillez consulter un professionnel de la santé.</p>
         </c:when>
        
         <c:when test="${musclee == 'oui'}">
-            <p><strong>Attention !</strong> Cet outil peut ne pas refléter correctement votre corpulence en raison de votre musculature. Veuillez consulter un professionnel de la santé pour un évaluation plus précise.</p>
+            <p class="alert"><strong>Attention !</strong> <br><br>Cet outil peut ne pas refléter correctement votre corpulence en raison de votre musculature. Veuillez consulter un professionnel de la santé pour un évaluation plus précise.</p>
         </c:when>
        
         <c:otherwise>
-            <p>Votre IMC est : <strong>${imc}</strong></p>
-            <p>Interprétation de l'IMC selon l'OMS : <strong>${interpretation}</strong></p>
+            <div style="margin: 5% 25%; background-color:#b5ea8c; padding: 10px; border-radius:15px; align-self:center;  text-align:center; font-size:20px;">
+            	<p>Votre IMC est : <strong style="font-size:25px;">${imc}</strong></p>
+            	<p>Interprétation de l'IMC selon l'OMS :<br><br> <strong style="font-size:25px;">${interpretation}</strong></p>
+            </div>
         </c:otherwise>
     </c:choose>
 
-    <a href="index.html">Revenir au formulaire</a>
 </body>
 </html>
