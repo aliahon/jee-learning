@@ -1,3 +1,7 @@
+<%@ page import="form.bean.NoteForm" %>
+<%@ page import="mod.sco.Note" %>
+<%@ page import="java.util.Vector" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +23,9 @@
 </head>
 <body>
 
-    <form action="#">
+    <form action="notes.php" method="post">
         <label for="numInscription">Num Inscription :</label>
-        <input type="text" id="numInscription" name="numInscription">
+        <input type="text" id="numInscription" name="num_Ins" required>
         <button type="submit">OK</button>
     </form>
 
@@ -30,17 +34,24 @@
             <th>Matière</th>
             <th>Note</th>
         </tr>
+        <%
+        	NoteForm nf = (NoteForm) session.getAttribute("nf");
+        	Vector<Note> notes = nf.getLesNotes();
+        	float moy = 0;
+        	for(Note note : notes){
+        		moy+=note.getNote();
+       		}
+     		moy/=notes.size();
+        	for(Note note : notes){
+        %>
         <tr>
-            <td>GL</td>
-            <td>16.0</td>
+            <td><%=note.getMatiere() %></td>
+            <td><%=note.getNote() %></td>
         </tr>
+        <% }%>
         <tr>
-            <td>SR</td>
-            <td>14.5</td>
-        </tr>
-        <tr>
-            <td>Moyenne</td>
-            <td>15.25</td>
+            <td style="font-weight: bold; color: green;">Moyenne</td>
+            <td style="font-weight: bold; color: green;"><%= moy %></td>
         </tr>
     </table>
 
