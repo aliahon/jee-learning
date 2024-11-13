@@ -1,3 +1,4 @@
 ## Le modèle MCD de la gestion d’une école
 
-![image](https://github.com/user-attachments/assets/5c916418-f8c3-4e4b-b392-e087d0de5554)
+![image](https://github.com/user-attachments/assets/7b9f445e-27b9-49de-9d9e-44366e63f747)
+
